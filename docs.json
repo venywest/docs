@@ -45,7 +45,7 @@
             "group": "Legal",
             "pages": [
               "legal/terms",
-              "privacy",
+              "legal/privacy",
               "cookie",
               "security"
             ],
