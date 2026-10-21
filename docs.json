@@ -46,7 +46,7 @@
             "pages": [
               "legal/terms",
               "legal/privacy",
-              "cookie",
+              "legal/cookie",
               "security"
             ],
             "expanded": true
