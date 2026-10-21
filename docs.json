@@ -15,13 +15,13 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Platform",
+          "icon": "signature",
+          "href": "https://signyd.com/platform"
         },
         {
           "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
+          "href": "https://signyd.com/blog",
           "icon": "newspaper"
         }
       ]
