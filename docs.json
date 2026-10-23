@@ -47,7 +47,8 @@
               "legal/terms",
               "legal/privacy",
               "legal/cookie",
-              "legal/security"
+              "legal/security",
+              "verify"
             ],
             "expanded": true
           }
