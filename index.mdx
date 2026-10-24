@@ -1,4 +1,57 @@
 ---
 title: "Introduction"
-description: "Welcome to Signyd"
+description: "Sign documents with identity, not just ink."
+mode: "default"
 ---
+
+# What is Signyd
+
+Signyd is an e-signature workspace at [app.signyd.com](https://app.signyd.com). You upload a PDF or Word file, place signature fields, send secure links, and keep a signed PDF plus an audit trail.
+
+**Signyd Verify** is optional identity verification on a signer. The public **Verify** page lets anyone confirm a completed document without seeing ID photos.
+
+Legal and compliance pages at [docs.signyd.com/legal](https://docs.signyd.com/legal).
+
+## Who uses Signyd
+
+<AccordionGroup>
+  <Accordion title="Workspace users">
+    Owners, admins, and members send documents, manage contacts and templates, and download signed files from the organization workspace.
+  </Accordion>
+
+  <Accordion title="Signers">
+    Recipients open a unique email link on `/sign/[token]`. They do not need a Signyd account.
+  </Accordion>
+
+  <Accordion title="Reviewers">
+    Anyone with a verify link can check integrity and download the signed PDF for a limited time.
+  </Accordion>
+
+  <Accordion title="Developers">
+    Owners and admins create `sk_live_` API keys and receive HMAC-signed webhooks.
+  </Accordion>
+</AccordionGroup>
+
+## Product principles
+
+- **Passwordless login.** A 6-digit email code signs you in.
+- **Credits.** One signing credit is consumed when a signing process **completes**. Identity verification uses a separate credit pool.
+- **Privacy.** Verify pages expire. Download links expire. ID data is retained for 1 year after verification, then purged.
+- **English and Spanish.** Interface language is personal. Document language is set per request and used in emails, the signing notice, and the audit trail.
+
+## Main routes
+
+| Path | Purpose |
+| --- | --- |
+| `/login`, `/signup` | Sign in or create an account |
+| `/onboarding` | Create the first workspace |
+| `/choose-plan` | Activate a plan before sending |
+| `/dashboard` | Home overview |
+| `/documents`, `/documents/new` | List and create requests |
+| `/documents/[id]/prepare` | Recipients, fields, send |
+| `/templates`, `/contacts` | Reusable layouts and people |
+| `/settings/*` | Team, billing, branding, API (owners and admins) |
+| `/account` | Profile and MFA |
+| `/sign/[token]` | Signer experience |
+| `/verify/[token]` | Public audit page |
+| `/api/v1/*` | REST API |
