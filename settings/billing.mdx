@@ -1,0 +1,59 @@
+---
+title: "Billing, plans, and credits"
+description: "Subscriptions, add-ons, cards, and what each credit means."
+---
+
+Routes:
+
+- `/settings/billing` — owners and admins
+- `/choose-plan` — required when there is no usable plan
+- `/checkout` — pay
+- `/buy/[slug]` — public plan link
+
+Tabs: **Billing**, **Plans & Addons**, **Cards**.
+
+## Credits
+
+| Type | Rule |
+| --- | --- |
+| **Signing credits** | **1 credit = 1 completed signing process** |
+| **Monthly credits** | Come from the active plan period |
+| **Purchased credits** | Extra packs; usable **only with an active plan**; expire **90 days** after purchase |
+| **ID verification credits** | Monthly + purchased packs; consumed when a new Verify session starts |
+
+Out of credits: upgrade the plan or buy a pack. Send blocks with a clear error and can open a purchase overlay.
+
+## Storage and seats
+
+Billing shows storage as **{used} of {limit}**. Your plan includes a storage quota. **Storage packs** and **extra seats** are add-ons you can add in **Plans & Addons**.
+
+## Plans and add-ons
+
+Open **Plans & Addons** or **Choose a plan** to see the current public plans, prices (USD), trials, and extras. Typical extras:
+
+- Signing credit pack
+- ID verification pack
+- Extra seat
+- Storage pack
+
+You can switch **Monthly** or **Annual**, apply a coupon, upgrade, or downgrade from this tab.
+
+## Billing tab
+
+- Active plan and status
+- **Cancel plan** at period end, or **Keep plan**
+- **Manage billing in Stripe** (customer portal)
+- **Recurring charges** and next charge date
+- **Receipts** download
+
+## Cards
+
+Save up to **2** cards with Stripe. Mark a **Default**. Add, edit, or remove.
+
+## Checkout
+
+- Card payment, USD
+- **Digital delivery** — plan and credits activate when payment confirms
+- Coupon field
+- Change plan / interval in the cart
+- Taxes may apply

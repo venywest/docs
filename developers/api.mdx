@@ -1,0 +1,99 @@
+---
+title: "REST API"
+description: "Keys and endpoints available from Settings → API."
+---
+
+Owners and admins manage the API at **Settings → API** (`/settings/api`). Members cannot open this page.
+
+Your key only acts on **your organization**: list and create documents, resend a document, and configure your outgoing webhook. There are no other customer API routes.
+
+Base path: `https://app.signyd.com/api/v1`
+
+## In the app
+
+On **Settings → API** you can:
+
+1. Create a named live key (`sk_live_…`).
+2. Copy it once: **Copy this now — {value}**. Signyd does not show the secret again.
+3. Delete a key. Requests that used it stop working.
+4. Set the **Webhook URL** and rotate the webhook secret.
+
+See [Webhooks](/developers/webhooks) for events and signature verification.
+
+## Authenticate
+
+Send this header on every request:
+
+```
+Authorization: Bearer sk_live_…
+```
+
+A missing, revoked, or deleted key returns `401` `{ "error": "unauthorized" }`.
+
+## `GET /api/v1/documents`
+
+Lists up to **50** documents in your workspace.
+
+```json
+{
+  "data": [
+    {
+      "id": "uuid",
+      "title": "string",
+      "status": "draft|sent|partially_signed|completed|voided|expired",
+      "sha256_hash": "hex|null",
+      "created_at": "ISO-8601"
+    }
+  ]
+}
+```
+
+## `GET /api/v1/documents/:id`
+
+Returns that document plus `recipients` if it belongs to your organization. Otherwise `404` `{ "error": "not_found" }`.
+
+## `POST /api/v1/documents`
+
+Creates a PDF, adds recipients, and sends signing invites.
+
+```json
+{
+  "title": "Service agreement",
+  "filename": "agreement.pdf",
+  "pdf_base64": "<base64 PDF>",
+  "recipients": [
+    {
+      "email": "ada@example.com",
+      "name": "Ada Lovelace",
+      "kyc_required": false,
+      "page_number": 1,
+      "signature_x": 72,
+      "signature_y": 72
+    }
+  ]
+}
+```
+
+Rules:
+
+- `title`, `pdf_base64`, and at least one recipient are required
+- Maximum **40** recipients
+- PDF maximum **15 MiB**
+- Password-protected (open-encrypted) PDFs return `pdf_open_encryption`
+- Signature position defaults to `72,72` on page `1`
+- Success: `201` with the document and recipients
+
+| Status | `error` |
+| --- | --- |
+| 401 | `unauthorized` |
+| 400 | `invalid_json`, validation messages, `too_many_recipients`, `invalid_pdf`, `pdf_open_encryption` |
+| 413 | `payload_too_large` |
+| 402 | `no_credits`, `no_kyc_credits` (may include `document_id` if the draft was created) |
+
+## `POST /api/v1/documents/:id/send`
+
+Resends invitations for a document in your organization. `200` `{ "ok": true }`.
+
+## Webhook endpoints
+
+`GET` and `PATCH /api/v1/webhooks` are documented on [Webhooks](/developers/webhooks).

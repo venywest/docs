@@ -1,0 +1,59 @@
+---
+title: "Facturación, planes y créditos"
+description: "Suscripciones, extras, tarjetas y el significado de cada crédito."
+---
+
+Rutas:
+
+- `/settings/billing` — propietario y admin
+- `/choose-plan` — obligatorio sin plan usable
+- `/checkout` — pagar
+- `/buy/[slug]` — enlace público de plan
+
+Pestañas: **Facturación**, **Planes y extras**, **Tarjetas**.
+
+## Créditos
+
+| Tipo | Regla |
+| --- | --- |
+| **Créditos de firma** | **1 crédito = 1 proceso de firma completado** |
+| **Créditos mensuales** | Vienen del período del plan activo |
+| **Créditos comprados** | Paquetes extra; solo con **plan activo**; caducan a **90 días** |
+| **Créditos de verificación** | Mensuales + paquetes; se consumen al iniciar una sesión Verify nueva |
+
+Sin créditos: mejora el plan o compra un paquete. El envío se bloquea y puede abrir la compra.
+
+## Almacenamiento y asientos
+
+La facturación muestra **{used} de {limit}**. Tu plan incluye un cupo de almacenamiento. Los paquetes de **almacenamiento** y **asientos extra** se añaden en **Planes y extras**.
+
+## Planes y extras
+
+Abre **Planes y extras** o **Elige un plan** para ver los planes públicos, precios (USD), pruebas y complementos. Extras habituales:
+
+- Paquete de créditos de firma
+- Paquete de verificación de identidad
+- Asiento extra
+- Paquete de almacenamiento
+
+Puedes cambiar **Mensual** o **Anual**, aplicar un cupón, mejorar o bajar de plan.
+
+## Pestaña Facturación
+
+- Plan activo y estado
+- **Cancelar plan** al final del período, o **Mantener plan**
+- **Gestionar facturación en Stripe**
+- **Cargos recurrentes**
+- **Recibos**
+
+## Tarjetas
+
+Hasta **2** tarjetas. Marca una **Predeterminada**. Añade, edita o quita.
+
+## Checkout
+
+- Pago con tarjeta, USD
+- **Entrega digital** — el plan y los créditos se activan al confirmar el pago
+- Cupón
+- Cambiar plan / intervalo en el carrito
+- Pueden aplicarse impuestos

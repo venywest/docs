@@ -1,0 +1,36 @@
+---
+title: "Webhooks"
+description: "Receive HMAC-signed events for your organization."
+---
+
+Configure the URL and secret in **Settings → API** or with the calls below. Both apply only to **your organization**.
+
+Signyd sends `POST` JSON to your HTTPS endpoint.
+
+## Configure
+
+### `GET /api/v1/webhooks`
+
+Returns your current webhook URL and whether a secret is set (the secret value is not shown again).
+
+### `PATCH /api/v1/webhooks`
+
+Set `url` and optionally rotate the secret. Use the same `Authorization: Bearer sk_live_…` header as other [API](/developers/api) calls.
+
+You can also set the **Webhook URL** and rotate the secret in the app.
+
+## Verify the signature
+
+Each delivery includes an HMAC signature of the raw body. Compute the same HMAC with your webhook secret and compare it to the header before you process the payload. Reject requests that do not match.
+
+## Events you may receive
+
+Payloads include an event name and data scoped to your organization.
+
+| Event | When |
+| --- | --- |
+| Document status updates | A request is sent, completed, voided, or expired |
+| Recipient signed | A signer finishes |
+| `kyc.failed` | Identity verification failed or the requester declined (`reason` may be `requester_denied`) |
+
+Respond with `2xx` quickly. Signyd retries failed deliveries.

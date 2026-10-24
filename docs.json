@@ -26,34 +26,154 @@
         }
       ]
     },
-    "tabs": [
+    "languages": [
       {
-        "tab": "Docs",
-        "groups": [
+        "language": "en",
+        "default": true,
+        "tabs": [
           {
-            "group": "Getting Started",
-            "pages": [
-              "index",
-              "accounts",
-              "first-document"
+            "tab": "Docs",
+            "groups": [
+              {
+                "group": "Getting Started",
+                "pages": [
+                  "index",
+                  "accounts",
+                  "first-document"
+                ]
+              },
+              {
+                "group": "Workspace",
+                "pages": [
+                  "workspace/home",
+                  "workspace/roles",
+                  "workspace/languages"
+                ]
+              },
+              {
+                "group": "Documents",
+                "pages": [
+                  "documents/list",
+                  "documents/prepare",
+                  "documents/fields",
+                  "documents/detail"
+                ]
+              },
+              {
+                "group": "Library",
+                "pages": [
+                  "templates/overview",
+                  "contacts/overview"
+                ]
+              },
+              {
+                "group": "Signing and verification",
+                "pages": [
+                  "signing/recipient",
+                  "verify/identity",
+                  "verify/public-page"
+                ]
+              },
+              {
+                "group": "Settings",
+                "pages": [
+                  "settings/team",
+                  "settings/branding",
+                  "settings/billing",
+                  "settings/account-security"
+                ]
+              },
+              {
+                "group": "Developers",
+                "pages": [
+                  "developers/api",
+                  "developers/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Legal",
+            "groups": [
+              {
+                "group": "Legal",
+                "pages": [
+                  "legal/terms",
+                  "legal/privacy",
+                  "legal/cookie",
+                  "legal/security",
+                  "verify",
+                  "signature"
+                ],
+                "expanded": true
+              }
             ]
           }
         ]
       },
       {
-        "tab": "Legal",
-        "groups": [
+        "language": "es",
+        "tabs": [
           {
-            "group": "Legal",
-            "pages": [
-              "legal/terms",
-              "legal/privacy",
-              "legal/cookie",
-              "legal/security",
-              "verify",
-              "signature"
-            ],
-            "expanded": true
+            "tab": "Docs",
+            "groups": [
+              {
+                "group": "Primeros pasos",
+                "pages": [
+                  "es/index",
+                  "es/accounts",
+                  "es/first-document"
+                ]
+              },
+              {
+                "group": "Workspace",
+                "pages": [
+                  "es/workspace/home",
+                  "es/workspace/roles",
+                  "es/workspace/languages"
+                ]
+              },
+              {
+                "group": "Documentos",
+                "pages": [
+                  "es/documents/list",
+                  "es/documents/prepare",
+                  "es/documents/fields",
+                  "es/documents/detail"
+                ]
+              },
+              {
+                "group": "Biblioteca",
+                "pages": [
+                  "es/templates/overview",
+                  "es/contacts/overview"
+                ]
+              },
+              {
+                "group": "Firma y verificación",
+                "pages": [
+                  "es/signing/recipient",
+                  "es/verify/identity",
+                  "es/verify/public-page"
+                ]
+              },
+              {
+                "group": "Ajustes",
+                "pages": [
+                  "es/settings/team",
+                  "es/settings/branding",
+                  "es/settings/billing",
+                  "es/settings/account-security"
+                ]
+              },
+              {
+                "group": "Desarrolladores",
+                "pages": [
+                  "es/developers/api",
+                  "es/developers/webhooks"
+                ]
+              }
+            ]
           }
         ]
       }

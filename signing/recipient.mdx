@@ -1,0 +1,24 @@
+---
+title: "Signer experience"
+description: "What a recipient sees on the unique signing link."
+---
+
+Signers open a unique email link on `/sign/[token]`. They do **not** need a Signyd account.
+
+## Steps
+
+1. Open the email and select the signing link.
+2. If **Require Signyd Verify** is on, complete identity verification first. See [Signyd Verify](/verify/identity).
+3. Review the document and the electronic signature notice (in the **document language**).
+4. Fill required fields and apply the signature or initials.
+5. Confirm. Signyd records the event on the audit trail.
+
+## Common blocks
+
+| Situation | What happens |
+| --- | --- |
+| Identity required | The panel stays hidden until verification passes or the requester approves a review |
+| Sequential signing | The signer waits until earlier recipients finish |
+| Expired or voided | The link explains that the request is no longer open |
+
+After everyone signs, recipients receive the completed document. Optional **After signing** redirect opens if the sender configured it.
