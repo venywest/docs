@@ -1,0 +1,31 @@
+---
+title: "Document detail"
+description: "Status, recipients, resend, and downloads after you send."
+---
+
+Route: `/documents/[id]`
+
+The detail page shows the request status, each recipient, signing links, and files.
+
+## Recipients
+
+Each signer shows status (sent, opened, signed, or blocked). You can:
+
+- Copy that signer’s unique link
+- **Resend** the invitation
+- Open the **ID verification** tab when Signyd Verify is on — see [Signyd Verify](/verify/identity)
+
+HIPAA workspaces require MFA before this page and before signed PDF download.
+
+## Files
+
+When the request completes you can download:
+
+- The sealed signed PDF
+- The certificate of completion / audit trail
+
+Public reviewers use a separate [Verify page](/verify/public-page). That page never shows ID photos.
+
+## Archive
+
+Completed documents cannot be deleted. **Archive** them from the list or detail page. Archived files are removed automatically after 30 days.

@@ -1,0 +1,57 @@
+---
+title: "Introducción"
+description: "Firma documentos con identidad, no solo con tinta."
+mode: "default"
+---
+
+# Qué es Signyd
+
+Signyd es un workspace de firma electrónica en [app.signyd.com](https://app.signyd.com). Subes un PDF o Word, colocas campos de firma, envías enlaces seguros y conservas el PDF firmado más una pista de auditoría.
+
+**Signyd Verify** es verificación de identidad opcional en un firmante. La página pública **Verify** permite confirmar un documento completado sin ver fotos del ID.
+
+Páginas legales en [docs.signyd.com/legal](https://docs.signyd.com/legal).
+
+## Quién usa Signyd
+
+<AccordionGroup>
+  <Accordion title="Usuarios del workspace">
+    Propietarios, administradores y miembros envían documentos, gestionan contactos y plantillas, y descargan archivos firmados.
+  </Accordion>
+
+  <Accordion title="Firmantes">
+    Los destinatarios abren un enlace único en `/sign/[token]`. No necesitan cuenta de Signyd.
+  </Accordion>
+
+  <Accordion title="Revisores">
+    Cualquiera con un enlace Verify puede comprobar la integridad y descargar el PDF firmado durante un tiempo limitado.
+  </Accordion>
+
+  <Accordion title="Desarrolladores">
+    Propietarios y administradores crean claves `sk_live_` y reciben webhooks firmados con HMAC.
+  </Accordion>
+</AccordionGroup>
+
+## Principios del producto
+
+- **Login sin contraseña.** Un código de 6 dígitos por correo inicia sesión.
+- **Créditos.** Un crédito de firma se consume cuando un proceso de firma **se completa**. La verificación de identidad usa un cupo aparte.
+- **Privacidad.** Las páginas Verify caducan. Los enlaces de descarga caducan. Los datos de ID se retienen 1 año después de la verificación y luego se eliminan.
+- **Inglés y español.** El idioma de la interfaz es personal. El idioma del documento se define por solicitud y se usa en correos, el aviso de firma y la auditoría.
+
+## Rutas principales
+
+| Ruta | Uso |
+| --- | --- |
+| `/login`, `/signup` | Entrar o crear cuenta |
+| `/onboarding` | Crear el primer workspace |
+| `/choose-plan` | Activar un plan antes de enviar |
+| `/dashboard` | Inicio |
+| `/documents`, `/documents/new` | Listar y crear solicitudes |
+| `/documents/[id]/prepare` | Destinatarios, campos, envío |
+| `/templates`, `/contacts` | Diseños reutilizables y personas |
+| `/settings/*` | Equipo, facturación, marca, API (propietario y admin) |
+| `/account` | Perfil y MFA |
+| `/sign/[token]` | Experiencia del firmante |
+| `/verify/[token]` | Página pública de auditoría |
+| `/api/v1/*` | API REST |

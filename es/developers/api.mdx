@@ -1,0 +1,99 @@
+---
+title: "API REST"
+description: "Claves y endpoints disponibles en Ajustes → API."
+---
+
+Propietarios y administradores gestionan la API en **Ajustes → API** (`/settings/api`). Los miembros no pueden abrir esta página.
+
+Tu clave solo actúa sobre **tu organización**: listar y crear documentos, reenviar un documento y configurar tu webhook saliente. No hay otras rutas de API para el cliente.
+
+Ruta base: `https://app.signyd.com/api/v1`
+
+## En la aplicación
+
+En **Ajustes → API** puedes:
+
+1. Crear una clave live con nombre (`sk_live_…`).
+2. Copiarla una vez: **Copia esto ahora — {value}**. Signyd no vuelve a mostrar el secreto.
+3. Eliminar una clave. Las peticiones que la usen dejan de funcionar.
+4. Definir la **URL del webhook** y rotar el secreto.
+
+Ver [Webhooks](/es/developers/webhooks) para eventos y firma.
+
+## Autenticación
+
+Envía este encabezado en cada petición:
+
+```
+Authorization: Bearer sk_live_…
+```
+
+Una clave ausente, revocada o eliminada responde `401` `{ "error": "unauthorized" }`.
+
+## `GET /api/v1/documents`
+
+Lista hasta **50** documentos de tu workspace.
+
+```json
+{
+  "data": [
+    {
+      "id": "uuid",
+      "title": "string",
+      "status": "draft|sent|partially_signed|completed|voided|expired",
+      "sha256_hash": "hex|null",
+      "created_at": "ISO-8601"
+    }
+  ]
+}
+```
+
+## `GET /api/v1/documents/:id`
+
+Devuelve ese documento y `recipients` si es de tu organización. Si no, `404` `{ "error": "not_found" }`.
+
+## `POST /api/v1/documents`
+
+Crea un PDF, añade destinatarios y envía invitaciones de firma.
+
+```json
+{
+  "title": "Contrato de servicio",
+  "filename": "acuerdo.pdf",
+  "pdf_base64": "<PDF en base64>",
+  "recipients": [
+    {
+      "email": "ada@example.com",
+      "name": "Ada Lovelace",
+      "kyc_required": false,
+      "page_number": 1,
+      "signature_x": 72,
+      "signature_y": 72
+    }
+  ]
+}
+```
+
+Reglas:
+
+- `title`, `pdf_base64` y al menos un destinatario
+- Máximo **40** destinatarios
+- PDF máximo **15 MiB**
+- PDF con contraseña de apertura: `pdf_open_encryption`
+- Posición de firma por defecto `72,72` en página `1`
+- Éxito: `201` con documento y destinatarios
+
+| Estado | `error` |
+| --- | --- |
+| 401 | `unauthorized` |
+| 400 | `invalid_json`, validación, `too_many_recipients`, `invalid_pdf`, `pdf_open_encryption` |
+| 413 | `payload_too_large` |
+| 402 | `no_credits`, `no_kyc_credits` (puede incluir `document_id`) |
+
+## `POST /api/v1/documents/:id/send`
+
+Reenvía invitaciones de un documento de tu organización. `200` `{ "ok": true }`.
+
+## Endpoints de webhook
+
+`GET` y `PATCH /api/v1/webhooks` están en [Webhooks](/es/developers/webhooks).

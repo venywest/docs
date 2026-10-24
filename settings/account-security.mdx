@@ -1,0 +1,35 @@
+---
+title: "Account and security"
+description: "Profile, email change, MFA, and HIPAA workspaces."
+---
+
+Route: `/account` (every signed-in user)
+
+## Profile
+
+- Edit **name**
+- Change **email** with a two-step code: confirm a code on the **current** address, then a code on the **new** address
+- **Manage MFA**
+
+## MFA (TOTP)
+
+Route: `/account/mfa`
+
+1. Scan the QR code with an authenticator app.
+2. Enter a 6-digit code.
+3. Store the backup codes.
+
+If your organization uses HIPAA mode, MFA is **required** before opening documents or downloading signed PDFs. You are sent to `/account/mfa?reason=hipaa`.
+
+## HIPAA organizations
+
+If HIPAA mode is on for your workspace:
+
+- Health information is protected at rest
+- MFA is required for workspace users
+- Signers confirm email before the signing panel
+- Access events are recorded (views and downloads)
+
+## Session
+
+**Sign out** from the shell. Login is email OTP only (plus optional TOTP).

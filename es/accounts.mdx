@@ -1,0 +1,47 @@
+---
+title: "Cuentas"
+---
+
+# Crear una cuenta e iniciar sesión
+
+## Registro
+1. Abre [app.signyd.com/signup](https://app.signyd.com/signup).
+2. Ingresa **Nombre completo**, **Correo** y **Organización**.
+3. Pulsa **Enviar código de acceso**.
+4. Ingresa el **código de un solo uso de 6 dígitos** de tu bandeja.
+5. Signyd crea tu usuario y workspace, y te envía a **Elige un plan**.
+<Tip>
+Si no ves el correo, revisa spam o promociones. Puedes pedir otro código con **Reenviar código**.
+</Tip>
+## Invitación de equipo
+Si recibiste un enlace de invitación (`/signup?invite=…`):
+- El correo queda bloqueado a la invitación.
+- No creas una organización nueva. Te unes al workspace existente después del código.
+- Un enlace inválido o usado muestra: **This invite link is invalid or has already been used.**
+## Iniciar sesión
+1. Abre `/login`.
+2. Ingresa **Correo** → **Enviar código de acceso**.
+3. Ingresa el código de 6 dígitos → **Verificar y continuar**.
+Usa **Usar otro correo** para empezar de nuevo. Demasiados intentos muestran un mensaje de espera.
+No hay campo de contraseña.
+## Checkout de invitado (comprar un plan primero)
+Puedes empezar desde una URL pública de plan (`/buy/[slug]`) o `/checkout` sin cuenta:
+1. Ingresa el correo que será el **admin del workspace**.
+2. Paga con tarjeta (USD; pueden aplicarse impuestos).
+3. Signyd crea la cuenta y envía un enlace de confirmación.
+4. Abre el correo y continúa al workspace.
+Si ese correo ya tiene cuenta, Signyd pide que **inicies sesión**.
+<Warning>
+Los miembros (`role = member`) no pueden pagar. Solo propietarios y administradores suscriben o añaden extras.
+</Warning>
+## Onboarding
+Si tienes sesión pero no organización, `/onboarding` pide **Crear tu workspace**. Confirma el nombre de la organización.
+## Elige un plan
+Los workspaces nuevos deben activar un plan en `/choose-plan` antes de enviar documentos, usar créditos o guardar archivos.
+- Alterna **Mensual** o **Anual**.
+- Las pruebas aparecen como prueba de **N días** cuando el catálogo las habilita.
+- Aplica un cupón si tienes uno.
+- Los miembros ven planes pero no pueden pagar.
+Tras una suscripción usable (activa o en prueba), Signyd te envía a **Inicio**.
+## Después del pago
+El checkout con sesión muestra que ya está listo y redirige a Inicio. El checkout de invitado pide confirmar el correo primero.

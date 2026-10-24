@@ -29,5 +29,6 @@
 
 ## Content boundaries
 
-{/* Define what should and shouldn't be documented */}
-{/* Example: Don't document internal admin features */}
+- Document the customer workspace only (owners, admins, members, signers, public verify).
+- Document Settings → API and `/api/v1` routes the customer key can call.
+- Do not document Super Admin, `/admin`, platform secrets, or internal operators.

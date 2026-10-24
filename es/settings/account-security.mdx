@@ -1,0 +1,35 @@
+---
+title: "Cuenta y seguridad"
+description: "Perfil, cambio de correo, MFA y workspaces HIPAA."
+---
+
+Ruta: `/account` (todo usuario con sesión)
+
+## Perfil
+
+- Editar **nombre**
+- Cambiar **correo** con dos códigos: uno en la dirección **actual** y otro en la **nueva**
+- **Gestionar MFA**
+
+## MFA (TOTP)
+
+Ruta: `/account/mfa`
+
+1. Escanea el QR con una app de autenticación.
+2. Ingresa el código de 6 dígitos.
+3. Guarda los códigos de respaldo.
+
+Si tu organización usa modo HIPAA, el MFA es **obligatorio** antes de abrir documentos o descargar el PDF firmado. Te envían a `/account/mfa?reason=hipaa`.
+
+## Organizaciones HIPAA
+
+Si el modo HIPAA está activo en tu workspace:
+
+- La información de salud se protege en reposo
+- El MFA es obligatorio
+- El firmante confirma el correo antes del panel
+- Se registran accesos (vistas y descargas)
+
+## Sesión
+
+**Cerrar sesión** en el menú. El login es OTP por correo (más TOTP opcional).

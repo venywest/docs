@@ -1,0 +1,54 @@
+---
+title: "Signyd Verify"
+description: "Identity verification before a signer can open the panel."
+---
+
+Enable Signyd Verify per signer with **Require Signyd Verify** when you prepare a document, or with `kyc_required` on your API request.
+
+If verification is not available on your workspace, send shows: **Identity verification is not configured.** Contact Signyd support.
+
+## Credits
+
+- Separate from signing credits
+- Monthly allotment comes from the plan
+- Extra packs can be purchased
+- Send checks that you have enough credits for every Verify signer
+- A credit is consumed when a **new** verification session starts (continuing the same session on the same network does not charge again)
+
+## Signer steps
+
+1. The panel shows: **Identity verification is required before the signing panel can be shown.**
+2. Select **Verify identity**. The signer scans an ID and completes a liveness / selfie check.
+3. On return, Signyd checks:
+   - **Name match** — first name and at least one last name must match the authorized signer
+   - **IP match** — verification and signing must happen on the **same network**
+4. If the case is **in review**, the signer waits: **You can sign after the requester approves it.**
+5. When approved, the signing panel appears.
+
+### Common blocks
+
+| Message | Cause |
+| --- | --- |
+| Name on the ID does not match | Wrong person or different legal name |
+| Same network required | VPN, mobile vs office, or different device network |
+| In review | Waiting for the requester (or an automated review) |
+
+## Requester review
+
+On the document **ID verification** tab:
+
+- Review photos and extracted data
+- **Approve** — signer may continue (can override a name-mismatch hold)
+- **Decline** — signer cannot sign; if you use webhooks, `kyc.failed` is sent with `reason: requester_denied`
+
+The requester also gets an email: **Identity verification needs review.**
+
+## What is stored
+
+The ID verification PDF and audit events record results (approved / declined / failed), name on ID, document type, liveness, face match, IP country, and hashes.
+
+**Photos are never shown on the public Verify page.**
+
+Data is purged **12 months** after the verification date. After purge, the UI states that identity data was removed at the end of the retention period.
+
+The product footer may show: **Didit-powered KYC services for Signyd Verify.**

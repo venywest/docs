@@ -1,0 +1,54 @@
+---
+title: "Signyd Verify"
+description: "Verificación de identidad antes de abrir el panel de firma."
+---
+
+Activa Signyd Verify por firmante con **Requerir Signyd Verify** al preparar el documento, o con `kyc_required` en tu petición de API.
+
+Si la verificación no está disponible en tu workspace, el envío muestra: **La verificación de identidad no está configurada.** Contacta a soporte de Signyd.
+
+## Créditos
+
+- Separados de los créditos de firma
+- El plan incluye un cupo mensual
+- Se pueden comprar paquetes extra
+- El envío comprueba créditos para cada firmante Verify
+- Se consume un crédito al **iniciar una sesión de verificación nueva** (continuar la misma sesión en la misma red no cobra de nuevo)
+
+## Pasos del firmante
+
+1. El panel indica: **Se requiere verificación de identidad antes de mostrar el panel de firma.**
+2. Pulsa **Verificar identidad**. El firmante escanea un ID y completa la prueba de vida / selfie.
+3. Al volver, Signyd comprueba:
+   - **Nombre** — nombre y al menos un apellido deben coincidir con el firmante autorizado
+   - **IP** — verificación y firma en la **misma red**
+4. Si el caso está **en revisión**, el firmante espera a que el solicitante apruebe.
+5. Con aprobación, aparece el panel de firma.
+
+### Bloqueos frecuentes
+
+| Mensaje | Causa |
+| --- | --- |
+| El nombre del ID no coincide | Otra persona u otro nombre legal |
+| Misma red requerida | VPN, móvil vs oficina u otra red |
+| En revisión | Espera al solicitante (o a una revisión automática) |
+
+## Revisión del solicitante
+
+En la pestaña **Verificación de identidad**:
+
+- Revisa fotos y datos
+- **Aprobar** — el firmante continúa (puede superar un desajuste de nombre)
+- **Rechazar** — no podrá firmar; si usas webhooks, se envía `kyc.failed` con `reason: requester_denied`
+
+También llega un correo: **La verificación de identidad necesita revisión.**
+
+## Qué se guarda
+
+El PDF de verificación y la auditoría registran resultado, nombre en el ID, tipo de documento, prueba de vida, coincidencia facial, país de IP y hashes.
+
+**Las fotos nunca aparecen en la página pública Verify.**
+
+Los datos se eliminan **12 meses** después de la verificación.
+
+El pie del producto puede mostrar: **Didit-powered KYC services for Signyd Verify.**
