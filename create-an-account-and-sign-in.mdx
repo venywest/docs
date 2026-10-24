@@ -1,3 +1,45 @@
 ---
 title: "Create an account and Sign In"
 ---
+
+## Sign up
+1. Open [app.signyd.com/signup](https://app.signyd.com/signup).
+2. Enter **Full name**, **Email**, and **Organization**.
+3. Select **Send login code**.
+4. Enter the **6-digit one-time code** from your inbox.
+5. Signyd creates your user and workspace, then sends you to **Choose a plan**.
+<Tip>
+If you do not see the email, check spam or promotions. You can request a new code with **Resend code**.
+</Tip>
+## Team invite
+If you received an invite link (`/signup?invite=…`):
+- The email address is locked to the invitation.
+- You do not create a new organization. You join the existing workspace after the code.
+- An invalid or used link shows: **This invite link is invalid or has already been used.**
+## Sign in
+1. Open `/login`.
+2. Enter **Email** → **Send login code**.
+3. Enter the 6-digit code → **Verify and continue**.
+Use **Use a different email** to start over. Too many attempts shows a wait message.
+There is no password field. Older “check email and password” errors still exist as fallback copy.
+## Guest checkout (buy a plan first)
+You can start from a public plan URL (`/buy/[slug]`) or `/checkout` without an account:
+1. Enter the email that will become the **workspace admin**.
+2. Pay with card (USD; taxes may apply).
+3. Signyd creates the account and emails a confirmation link.
+4. Open the email, then continue to the workspace.
+If that email already has an account, Signyd asks you to **sign in** instead of creating a duplicate.
+<Warning>
+Members (`role = member`) cannot pay. Only owners and admins can subscribe or add extras.
+</Warning>
+## Onboarding
+If you are signed in but have no organization, `/onboarding` asks you to **Create your workspace**. Confirm the organization name to enter Signyd.
+## Choose a plan
+New workspaces must activate a plan on `/choose-plan` before sending documents, using credits, or storing files.
+- Toggle **Monthly** or **Annual**.
+- Trials appear as **{count}-day trial** when the catalog enables them.
+- Apply a coupon if you have one.
+- Members see plans but cannot checkout.
+After a usable subscription (active or trialing), Signyd sends you to **Home**.
+## After payment
+Logged-in checkout shows **You're all set** and redirects to Home. Guest checkout tells you to confirm email first.
