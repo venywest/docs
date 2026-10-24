@@ -34,7 +34,7 @@
             "group": "Getting Started",
             "pages": [
               "index",
-              "Accounts",
+              "accounts",
               "first-document"
             ]
           }
