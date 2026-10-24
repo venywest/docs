@@ -1,3 +1,44 @@
 ---
 title: "First document"
+description: "Upload, add signers, place fields, and send in three steps."
 ---
+You need an **active or trialing plan** and at least **one signing credit**. If any signer has **Require Signyd Verify**, you also need enough **ID verification credits**.
+## Step 1 — Upload
+1. Select **+ Document** (Home or Documents) or go to `/documents/new`.
+2. Drag a file or click to browse.
+3. Allowed formats: **PDF, DOC, DOCX**. Maximum size: **15 MB**.
+4. Word files convert to PDF in the browser. Do not close the tab during **Uploading** or **Converting**.
+5. Optional: **Open templates** and start from a saved layout.
+<Warning>
+Password-protected (open-encrypted) PDFs cannot be processed. Remove the open password and upload again.
+</Warning>
+## Step 2 — Recipients (`/documents/[id]/prepare`, step 1)
+1. Add at least one signer with **email, first name, and last name**.
+2. Use **+ Add recipient**, **Add myself**, or pick a saved contact.
+3. Toggle **Require Signyd Verify** on any signer who must pass identity verification before the signing panel.
+4. Continue.
+If you started from a template, Signyd may require a minimum number of signers.
+## Step 3 — Fields (step 2)
+1. Select the recipient in the toolbar.
+2. Choose a field type and click the page to place it.
+3. Add at least one **Signature** or **Initials** field.
+4. Open **Field settings** to mark required/optional, validation, size, and allowed signature methods.
+See [Fields](/documents/fields) for every type.
+## Step 4 — Review and send (step 3)
+1. Confirm **From**, **Send to**, and optional **CC** (CC receives the final document only).
+2. Optional: **Request signatures in order** (sequential signing).
+3. Set **Document language** (English or Español). This controls emails, the signing legal notice, and the audit trail for this request.
+4. Edit **Subject** and **Message**.
+5. Optional: **After signing** redirect URL if your plan includes branding.
+6. Select **Send document**. Wait for **Sending for signature…**. Do not leave the page.
+### After send
+- If you added yourself as a signer, Signyd can open your signing link immediately.
+- Otherwise you land on the document detail page with recipient statuses and the signing links.
+## If send fails
+| Message | What to do |
+| --- | --- |
+| No signing credits remaining | Upgrade or buy a credit pack |
+| No ID verification credits remaining | Buy a KYC pack or upgrade |
+| Identity verification is not configured | Ask Signyd Team to enable Didit in Super Admin |
+| Sending is not configured yet | Platform signing (Azure Key Vault) is not ready |
+A **Buy signing or ID verification credits** overlay can open from the send flow.
