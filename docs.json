@@ -33,7 +33,8 @@
           {
             "group": "Getting Started",
             "pages": [
-              "index"
+              "index",
+              "create-an-account-and-sign-in"
             ]
           }
         ]
