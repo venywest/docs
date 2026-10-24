@@ -4,7 +4,7 @@ title: "Terms"
 
 # Signyd Terms and Conditions
 
-**Last updated:** October 20, 2026
+**Last updated:** October 24, 2026
 
 These Terms and Conditions (the "Terms") govern access to and use of the Signyd website at signyd.com, the Signyd application at app.signyd.com, Signyd Verify, and all related services (together, the "Service"), provided by Villaces Inc., with its address at 4800 Fort Stevens St., Apt 703, Orlando, FL 32822, USA ("Signyd", "we", "us" or "our").
 
@@ -59,7 +59,7 @@ The Service is intended for business use. It is not offered to consumers for per
 
 ## 5. Electronic Signatures and Legal Effect
 
-5.1. **Legal framework.** The Service is designed to support electronic signatures that are recognized under laws such as the U.S. ESIGN Act and UETA, and Regulation (EU) No 910/2014 (eIDAS), subject to the type of signature used and the applicable law.
+5.1. **Legal framework.** The Service collects **simple electronic signatures (SES)** of each Signer (a visual mark plus access to the emailed signing link). Signyd then **cryptographically signs and seals** the completed PDF with keys held in an **HSM**, using **AATL** certificates and a **TSA** timestamp. The Service does **not** produce an advanced electronic signature (AES) or a qualified electronic signature (QES) of the Signer, and Signyd is not a qualified trust service provider. Whether an SES plus Signyd's cryptographic signature and seal is recognized under laws such as the U.S. ESIGN Act, UETA, or Regulation (EU) No 910/2014 (eIDAS) depends on the document, the parties and applicable law. See the Signature and Sealing Practices Statement.
 
 5.2. **No legal advice.** Signyd is a technology provider. We are not a party to any agreement signed through the Service, we are not a law firm, and nothing in the Service or these Terms is legal advice.
 
@@ -71,9 +71,9 @@ The Service is intended for business use. It is not offered to consumers for per
 
 ## 6. Audit Trail, Certificates and Sealing
 
-6.1. For each completed agreement the Service generates a Certificate of Completion that may include the document hash, signer IP addresses, UTC timestamps, email hashes, identity verification results and other event data, together with a cryptographic platform seal.
+6.1. For each completed agreement the Service generates a Certificate of Completion that may include the document hash, signer IP addresses, timestamps, email hashes, identity verification results and other event data. Signyd **cryptographically signs and seals** the completed PDF (PKCS#7 detached) with keys in an **HSM**, **AATL** certificates, and an RFC 3161 **TSA** timestamp.
 
-6.2. Sealed PDFs use certificates and hardware-protected keys managed by Signyd or its providers. Whether a particular PDF viewer displays a document as trusted depends on that software and on the trust lists it uses, which we do not control.
+6.2. The digital signature on the PDF is Signyd's (the PDF signer name is Signyd.com), not a personal certificate of each human Signer. Compatible readers that honor the Adobe Approved Trust List (AATL) can show the certificate as trusted.
 
 6.3. You acknowledge that we process and retain this evidentiary data as part of the Service, that it is necessary to provide the Service, and that Signers will be informed of this processing as described in our Privacy Policy. You may not attempt to alter, remove or falsify audit trail data or seals.
 
@@ -85,7 +85,7 @@ The Service is intended for business use. It is not offered to consumers for per
 
 7.3. **Providers.** Verification may be performed by us or by third-party identity verification providers acting on our behalf. Supported documents and territories are described on our website and may change.
 
-7.4. **No guarantee.** Identity verification is probabilistic and may produce false positives or false negatives. Results are provided as a tool to assist your decision-making and do not constitute a guarantee of identity, authority or legal capacity. You remain responsible for decisions you make based on verification results.
+7.4. **No guarantee.** Identity verification is probabilistic and may produce false positives or false negatives. Results are provided as a tool to assist your decision-making and do not constitute a guarantee of identity, authority or legal capacity. Completing Signyd Verify does not produce an advanced or qualified electronic signature of the Signer. You remain responsible for decisions you make based on verification results.
 
 7.5. **Compliance.** You must use Signyd Verify only for lawful purposes and in compliance with data protection, biometric privacy, anti-discrimination and anti-money-laundering laws applicable to you.
 

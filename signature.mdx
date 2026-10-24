@@ -4,95 +4,112 @@ title: "Signature"
 
 # Signyd Signature and Sealing Practices Statement
 
-**Last updated:** October 21, 2026
+**Last updated:** October 24, 2026
 
-This statement describes how Signyd, operated by Villaces Inc., creates electronic signatures, records the evidence of each signing, and seals completed documents. It explains the design of the Service so that Customers, Signers, auditors and courts can understand what the evidence shows and how to verify it. It supplements our Terms and Conditions and Security page.
+This statement describes how Signyd, operated by Villaces Inc., collects a Signer's mark, records evidence of each signing, and **cryptographically signs and seals** the completed PDF with Signyd's HSM-backed certificates. It supplements our Terms and Conditions and Security page.
+
+This is a description of what the Service implements. It is **not** a legal opinion, a qualified trust-service disclosure, or a guarantee that any court or authority will treat a particular file as an advanced or qualified signature of the human Signer.
 
 ## 1. Scope
 
-This statement applies to agreements prepared, sent and signed through the Service, and to the sealed PDF and Certificate of Completion that Signyd generates for each completed agreement.
+This statement applies to agreements prepared, sent and signed through the Service, to the cryptographically sealed PDF, and to the Certificate of Completion.
 
 ## 2. Roles
 
-- **Signyd** provides the technology that presents documents, collects signatures, records the signing events, and seals the completed document. Signyd is not a party to the agreements signed through the Service.
-- **The Sender (Customer)** decides what is signed, who must sign, and what level of identity verification is needed.
-- **The Signer** reviews the document, consents to sign electronically, and applies their signature.
+- **Signyd** presents documents, collects signature appearances, records events, and **cryptographically signs and seals** the completed PDF with Signyd's keys in an **HSM**. Signyd is not a party to the agreements signed through the Service.
+- **The Sender (Customer)** decides what is signed, who must sign, and whether Signyd Verify is required.
+- **The Signer** reviews the document, consents to sign electronically, and applies a **visual** signature (draw, type, or upload).
 
-Unless an agreement between the parties states otherwise, signatures created through the Service are electronic signatures, specifically Advanced Electronic Signatures (AES) and Simple Electronic Signatures (SES). They are not qualified electronic signatures under Regulation (EU) No 910/2014 (eIDAS). Whether a signature is legally valid for a particular document is for the parties to determine, as set out in our Terms.
+## 3. Classification (eIDAS)
 
-## 3. How a document is signed
+The Service is **not** a qualified trust service provider (QTSP). It does **not** issue personal certificates to the Signer, does **not** use a qualified signature creation device (QSCD) for the Signer, and does **not** produce a qualified electronic signature (QES) of the Signer.
+
+| Piece | What the Service does | eIDAS classification |
+| --- | --- | --- |
+| The Signer's act (draw / type / upload + email link) | A PNG appearance is stored and the recipient is marked signed. Authentication is possession of the emailed token. | **Simple electronic signature (SES)** of the Signer |
+| Signyd Verify | Optional identity check (document + liveness). Name match and same-network/IP checks. | Separate identity evidence. It does **not** turn the Signer's act into AES or QES |
+| Signyd cryptographic signature and seal on the completed PDF | PKCS#7 detached (`adbe.pkcs7.detached`), RSA-SHA256, private key in an **HSM**. Certificates are on the Adobe Approved Trust List (**AATL**). A trusted **TSA** timestamp is applied. The PDF `/Name` is **Signyd.com**, not the human Signer. `Reason` lists signer emails and IDs. | **Electronic signature and seal of Signyd** (legal person), produced with HSM-protected keys, AATL certificates, and TSA. This is **not** the Signer's personal AES or QES |
+
+The human Signer does not hold a private key. Article 26 eIDAS (advanced electronic signature of a natural person) requires, among other things, that signature-creation data be under that person's sole control. That requirement is **not** met for the human Signer.
+
+Signyd therefore **does not produce AES or QES of the Signer**. It produces **simple electronic signatures** of the people who sign, and it **cryptographically signs and seals** the completed file with Signyd's HSM certificates (AATL + TSA). Whether an SES plus that platform signature and seal is sufficient for a given document is for the parties and applicable law (including, where relevant, ESIGN and UETA) to determine.
+
+## 4. How a document is signed
 
 1. **Preparation.** The Sender uploads or selects a document, defines signers and fields, and sends it.
-2. **Fingerprint.** When the document is sent, the Service calculates a cryptographic hash (a unique digital fingerprint) of the document.
-3. **Delivery.** Each Signer receives a secure link by email. The link is personal to that Signer.
+2. **Fingerprint.** When the document is sent, the Service calculates a SHA-256 hash of the document.
+3. **Delivery.** Each Signer receives a unique link by email. Anyone who has that link can open the signing panel for that recipient.
 4. **Review and consent.** The Signer opens the document, reviews it, and agrees to conduct the transaction electronically.
-5. **Optional identity verification.** If the Sender enabled Signyd Verify, the Signer completes an identity check before signing. See our Identity Verification and Biometric Policy.
-6. **Signature.** The Signer applies their signature (for example drawn or typed) and confirms.
-7. **Recording.** The Service records the signing event with the evidence described in section 4.
-8. **Completion and sealing.** When every Signer has signed, the Service generates the final PDF and Certificate of Completion, and seals them as described in section 6.
-9. **Distribution.** The completed document is made available to the parties.
+5. **Optional identity verification.** If the Sender enabled Signyd Verify, the Signer completes an identity check before the panel. See our Identity Verification and Biometric Policy. Verify does not change the classification in section 3.
+6. **Signature appearance.** The Signer draws, types, or uploads an image. The Service stores that PNG, records the adopted name, and sets the recipient to signed. A signature identifier is derived from the invitation token (the last seven characters).
+7. **Recording.** The Service records the event with the evidence in section 5.
+8. **Completion.** When every required Signer has signed, the Service builds the final PDF and Certificate of Completion, then **cryptographically signs and seals** them as in section 7.
+9. **Distribution.** The completed, sealed document is made available to the parties.
 
-## 4. Evidence recorded for each signing
+## 5. Evidence recorded for each signing
 
 For each agreement, the Service records, as part of the audit trail:
 
 - an identifier for the agreement (an envelope ID);
 - the document hash at sending and at completion;
 - each Signer's name and a hash of their email address;
-- the signature as applied by the Signer;
-- the events of the process (sent, viewed, signed, declined, completed);
+- the signature appearance as applied by the Signer;
+- process events (sent, viewed, signed, declined, completed);
 - UTC timestamps for each event;
 - the IP address and browser information of the device used;
-- the authentication method, and the result of any identity verification.
+- the authentication method (email link), and the result of any identity verification.
 
-This evidence is included in the Certificate of Completion, which forms part of the sealed document, so the signatures, the events and the document they relate to are tied together in a single sealed file.
+This evidence is included in the Certificate of Completion inside the sealed PDF, so the appearances, the events and the document they relate to are tied together in a single cryptographically signed file.
 
-## 5. Time
+## 6. Time
 
-Event times are recorded in Coordinated Universal Time (UTC) by Signyd's systems. Upon final sealing, a qualified RFC 3161-compliant timestamp issued by a trusted third-party Time Stamping Authority (TSA) is embedded into the document.
+Operational event times are recorded in Coordinated Universal Time (UTC).
 
-## 6. Sealing
+Upon sealing, Signyd embeds a **RFC 3161** timestamp from a trusted Time Stamping Authority (**TSA**), using Signyd's **HSM**-backed, **AATL** certificates. That timestamp is independent of a local workstation clock.
 
-- **When:** the seal is applied once, after the last signature, to the final PDF that includes the Certificate of Completion.
-- **How:** the document is signed with a Signyd platform certificate issued by a trusted Certificate Authority (a member of the Adobe Approved Trust List - AATL), producing a standard PDF digital signature.
-- **Keys:** signing keys are managed with Microsoft Azure Key Vault Premium using hardware security module (HSM) protection (FIPS 140-2 Level 3 compliant). Keys are not kept in application code or databases, and access is limited and logged.
-- **Effect:** after sealing, the content of the document and the Certificate of Completion are protected against undetected change.
+## 7. Cryptographic signing and sealing
 
-## 7. Tamper evidence and how to verify
+- **When:** after the last required signature, Signyd signs and seals the final PDF (including the Certificate of Completion) **once**.
+- **How:** a detached PKCS#7 (`adbe.pkcs7.detached`) using RSA-SHA256, with a PDF ByteRange. The visible name on the digital signature is **Signyd.com**. The `Reason` field lists participant emails and identifiers.
+- **Keys and certificates:** private keys are generated and used inside an **HSM**. They are not stored in application code or the application database. Signyd's certificates are **AATL** (Adobe Approved Trust List) and are used together with a **TSA**.
+- **Effect:** compatible PDF readers can detect later changes to the sealed bytes and can trust the certificate via AATL. That check validates **Signyd's** cryptographic signature and seal, not a personal certificate of each human Signer.
 
-If anyone changes a sealed PDF after it was sealed, the digital signature stops being valid and compatible PDF readers show a warning.
+## 8. Tamper evidence and how to verify
+
+If anyone changes a sealed PDF after it was signed and sealed, the platform digital signature stops validating and compatible PDF readers show a warning.
 
 To verify a document:
 
 1. Open the sealed PDF in a reader that supports digital signatures, such as Adobe Acrobat, and open the signature panel.
-2. Check that the signature is valid and that the document has not been modified since the seal was applied.
-3. Compare the document hash in the Certificate of Completion with the hash of the file, if you need independent confirmation.
+2. Confirm a platform signature (name **Signyd.com**), that the certificate is trusted (AATL), and that a TSA timestamp is present.
+3. Confirm that the document has not been modified since the seal was applied.
+4. Compare the document hash in the Certificate of Completion with a SHA-256 of the file if you need an independent check.
 
-Whether a reader shows the certificate as trusted depends on that software and its trust lists, which Signyd does not control.
+## 9. Authentication of signers
 
-## 8. Authentication of signers
+By default, a Signer is identified by access to the unique link sent to their email address. That is possession of the token, not a personal cryptographic key.
 
-By default, a Signer is identified by access to a personal, single-use link sent to their email address. Customers who need stronger evidence can enable Signyd Verify, which checks a government-issued identity document and a live selfie. Identity verification reduces risk but is probabilistic and does not guarantee identity.
+Customers who need stronger identity evidence can enable Signyd Verify (government-issued document and live selfie, plus Signyd's name-match and same-network checks). Identity verification reduces risk but is probabilistic and does not guarantee identity. It does not give the Signer a certificate or raise the Signer's mark to AES or QES.
 
-## 9. Availability and retention of evidence
+## 10. Availability and retention of evidence
 
-Signed documents and Certificates of Completion are kept for as long as the Customer's account is active and for the period described in our Terms and Privacy Policy. Customers can export their completed documents. Because sealed files are self-contained, they can be verified without access to Signyd's systems.
+Signed documents and Certificates of Completion are kept for as long as the Customer's account is active and for the period described in our Terms and Privacy Policy. Customers can export completed documents. Because sealed files carry Signyd's HSM signature, AATL certificate and TSA timestamp, they can be verified in a compatible PDF reader without access to Signyd's systems.
 
-## 10. Certificate lifecycle and incidents
+## 11. Certificate lifecycle and incidents
 
-Signyd renews its signing certificates before they expire and may replace them if needed. If we find that a signing key may have been compromised, we will revoke the affected certificate, investigate, and notify affected Customers without undue delay in accordance with our incident management procedures and Certificate Authority revocation guidelines.
+Signyd renews or replaces its **HSM** signing certificates before they expire and may replace them if needed. If we find that a signing key may have been compromised, we will stop using the affected material, investigate, and notify affected Customers without undue delay in accordance with our incident procedures.
 
-## 11. Limits
+## 12. Limits
 
 - Signyd records evidence of what happened in the Service. It does not verify the content, legality or enforceability of any document.
-- Some documents cannot be signed electronically under local law, or need a specific signature level.
-- We cannot guarantee how courts, authorities or software will treat a particular signature or seal.
-- Signyd is not liable for acts of persons who obtain access to a Signer's email account or device.
+- Some documents cannot be signed electronically under local law, or need a specific signature level (including AES or QES of the natural person). The Service does not provide AES or QES of the Signer.
+- We cannot guarantee how courts or authorities will treat a particular signature or seal.
+- Signyd is not liable for acts of persons who obtain access to a Signer's email account, device, or signing link.
 
-## 12. Changes
+## 13. Changes
 
 We may update this statement as the Service evolves. The date at the top shows the latest revision, and material changes will be announced to Customers.
 
-## 13. Contact
+## 14. Contact
 
 Villaces Inc., Legal: legal@villaces.com Support: support@signyd.com
