@@ -76,7 +76,7 @@ Health information: Customers on the Custom Plan who need to process protected h
 We share personal data only as described here:
 
 - **With the Customer and other parties to the document:** Signers' names, emails, signatures, timestamps and audit trail data are visible to the Sender and to other signers of the same document as needed to complete the agreement.
-- **Service providers (subprocessors):** companies that help us run the Service, including: Cloudflare (application hosting, document storage and transactional email); Amazon Web Services (hosting for customers on the Custom Plan, including regional data residency where selected); OVH (infrastructure services); Stripe (payment processing); Microsoft Azure (cryptographic services for signing and sealing documents); Gellum (hosting of signyd.com and corporate email, managed in Costa Rica by 3-102-944062 Sociedad de Responsabilidad Limitada, which uses services provided in the United States by Gellum Inc.); Mintlify (hosting of our product documentation); and, where Signyd Verify is enabled, Didit (didit.me), which performs identity document and biometric verification. They may only process data on our instructions and under confidentiality and security obligations. A current list of subprocessors is available on request at legal@villaces.com.
+- **Service providers (subprocessors):** companies that help us run the Service, including: Cloudflare (application hosting, document storage and transactional email); Amazon Web Services (hosting for customers on the Custom Plan, including regional data residency where selected); OVH (infrastructure services); Stripe (payment processing); our **HSM** provider (cryptographic signing and sealing of completed documents); Gellum (hosting of signyd.com and corporate email, managed in Costa Rica by 3-102-944062 Sociedad de Responsabilidad Limitada, which uses services provided in the United States by Gellum Inc.); Mintlify (hosting of our product documentation); and, where Signyd Verify is enabled, Didit (didit.me), which performs identity document and biometric verification. They may only process data on our instructions and under confidentiality and security obligations. A current list of subprocessors is available on request at legal@villaces.com.
 - **Legal and safety:** where required by law, court order or valid legal process, or to protect the rights, safety and security of our users, the public or Signyd.
 - **Business transfers:** in connection with a merger, acquisition, financing or sale of assets, subject to protections consistent with this Policy.
 - **With your consent or at your direction.**
@@ -97,7 +97,7 @@ After these periods we delete or irreversibly anonymize the data.
 
 ## 7. Security
 
-We use measures designed to protect personal data, including encryption in transit and at rest, access controls, logging, and cryptographic services on Microsoft Azure (including hardware-protected keys in Key Vault) for Signyd's platform seal when sealing succeeds. No system is completely secure. If a breach affects your personal data we will notify you and the relevant authorities as required by law.
+We use measures designed to protect personal data, including encryption in transit and at rest, access controls, logging, and **HSM**-protected keys for Signyd's cryptographic signature and seal (AATL certificates and TSA). No system is completely secure. If a breach affects your personal data we will notify you and the relevant authorities as required by law.
 
 ## 8. Biometric data notice
 

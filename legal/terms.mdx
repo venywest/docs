@@ -59,7 +59,7 @@ The Service is intended for business use. It is not offered to consumers for per
 
 ## 5. Electronic Signatures and Legal Effect
 
-5.1. **Legal framework.** The Service collects **simple electronic signatures (SES)** of each Signer (a visual mark plus access to the emailed signing link) and, when sealing succeeds, applies an **electronic seal of Signyd** to the completed PDF. It does **not** produce an advanced electronic signature (AES) or a qualified electronic signature (QES) of the Signer, and Signyd is not a qualified trust service provider. Whether an SES (and, where applied, Signyd's seal) is recognized under laws such as the U.S. ESIGN Act, UETA, or Regulation (EU) No 910/2014 (eIDAS) depends on the document, the parties and applicable law. See the Signature and Sealing Practices Statement.
+5.1. **Legal framework.** The Service collects **simple electronic signatures (SES)** of each Signer (a visual mark plus access to the emailed signing link). Signyd then **cryptographically signs and seals** the completed PDF with keys held in an **HSM**, using **AATL** certificates and a **TSA** timestamp. The Service does **not** produce an advanced electronic signature (AES) or a qualified electronic signature (QES) of the Signer, and Signyd is not a qualified trust service provider. Whether an SES plus Signyd's cryptographic signature and seal is recognized under laws such as the U.S. ESIGN Act, UETA, or Regulation (EU) No 910/2014 (eIDAS) depends on the document, the parties and applicable law. See the Signature and Sealing Practices Statement.
 
 5.2. **No legal advice.** Signyd is a technology provider. We are not a party to any agreement signed through the Service, we are not a law firm, and nothing in the Service or these Terms is legal advice.
 
@@ -71,9 +71,9 @@ The Service is intended for business use. It is not offered to consumers for per
 
 ## 6. Audit Trail, Certificates and Sealing
 
-6.1. For each completed agreement the Service generates a Certificate of Completion that may include the document hash, signer IP addresses, UTC timestamps from Signyd's systems, email hashes, identity verification results and other event data. When Azure Key Vault sealing succeeds, the completed PDF also carries a cryptographic **platform seal** (Signyd's key; PKCS#7 detached). The Service does not embed a third-party RFC 3161 timestamp.
+6.1. For each completed agreement the Service generates a Certificate of Completion that may include the document hash, signer IP addresses, timestamps, email hashes, identity verification results and other event data. Signyd **cryptographically signs and seals** the completed PDF (PKCS#7 detached) with keys in an **HSM**, **AATL** certificates, and an RFC 3161 **TSA** timestamp.
 
-6.2. Sealed PDFs use keys managed in Microsoft Azure Key Vault. The seal, when present, is Signyd's electronic seal (the PDF signer name is Signyd.com), not a personal certificate of each human Signer. If sealing is not configured or fails, the Service still completes the agreement with a visual PDF and stores a SHA-256 hash. Whether a particular PDF viewer displays a sealed document as trusted depends on that software and on the trust lists it uses, which we do not control.
+6.2. The digital signature on the PDF is Signyd's (the PDF signer name is Signyd.com), not a personal certificate of each human Signer. Compatible readers that honor the Adobe Approved Trust List (AATL) can show the certificate as trusted.
 
 6.3. You acknowledge that we process and retain this evidentiary data as part of the Service, that it is necessary to provide the Service, and that Signers will be informed of this processing as described in our Privacy Policy. You may not attempt to alter, remove or falsify audit trail data or seals.
 

@@ -11,7 +11,7 @@ Signers open a unique email link on `/sign/[token]`. They do **not** need a Sign
 2. If **Require Signyd Verify** is on, complete identity verification first. See [Signyd Verify](/verify/identity).
 3. Review the document and the electronic signature notice (in the **document language**).
 4. Fill required fields and apply the signature or initials.
-5. Confirm. Signyd stores your drawn, typed, or uploaded mark and records the event on the audit trail. That mark is a simple electronic signature. Signyd's cryptographic seal, if applied later, uses Signyd's key — not yours.
+5. Confirm. Signyd stores your drawn, typed, or uploaded mark and records the event on the audit trail. That mark is a simple electronic signature. When the request completes, Signyd **cryptographically signs and seals** the PDF with its **HSM** (AATL + TSA) — Signyd's keys, not yours.
 
 ## Common blocks
 
