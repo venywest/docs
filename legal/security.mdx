@@ -4,9 +4,9 @@ title: "Security"
 
 # Security at Signyd
 
-**Last updated:** October 20, 2026
+**Last updated:** October 24, 2026
 
-Signing an agreement means trusting a platform with sensitive documents, identities and evidence. This page describes how Signyd protects that trust. It summarizes the measures we use today, and it will change as we improve them. For how we handle personal data, see our Privacy Policy. For legal and regulatory topics, see our Compliance page. 
+Signing an agreement means trusting a platform with sensitive documents, identities and evidence. This page describes how Signyd protects that trust. It summarizes the measures we use today, and it will change as we improve them. For how we handle personal data, see our Privacy Policy. For how signatures and seals are produced, see the Signature and Sealing Practices Statement. 
 
 ## 1. Our approach
 
@@ -27,17 +27,19 @@ The Signyd application at app.signyd.com runs on Cloudflare's global network. Do
 
 ## 4. Cryptographic sealing and audit trail
 
-When all parties have signed, Signyd generates a sealed PDF and a Certificate of Completion.
+When all parties have signed, Signyd generates the completed PDF and a Certificate of Completion, then **attempts** to apply a platform seal.
 
-- **Platform seal:** the completed PDF is sealed with a cryptographic signature. Signing keys are managed with Microsoft Azure's cryptographic services and are not stored in the application code or in the database.
-- **Tamper evidence:** if a sealed document is modified after completion, compatible PDF readers show that the signature is no longer valid.
-- **Audit trail:** the Certificate of Completion records the key events of each agreement, such as when it was viewed and signed, with UTC timestamps, IP addresses, the document hash and a hash of each signer's email address.
+- **Platform seal:** when Azure Key Vault is configured and the operation succeeds, the PDF is sealed with a detached PKCS#7 signature (RSA-SHA256). The private key is Signyd's key in Key Vault, not a key of the human Signer. The seal name is Signyd.com. Keys are not stored in application code or the application database.
+- **No TSA:** event times and the seal `signingTime` come from Signyd's clock. The Service does not attach an RFC 3161 timestamp from a Time Stamping Authority.
+- **If sealing fails:** the agreement still completes with the visual signatures. Signyd stores a SHA-256 of that file. Tamper evidence then depends on Signyd's records, not on a PDF digital signature.
+- **Tamper evidence (sealed files):** if a sealed document is modified after completion, compatible PDF readers show that the platform signature is no longer valid.
+- **Audit trail:** the Certificate of Completion records key events, UTC timestamps from Signyd's systems, IP addresses, the document hash and a hash of each signer's email address.
 
 ## 5. Authentication and access control
 
 - **Login:** account authentication and session management are handled by Clerk, a specialized identity provider, rather than by custom-built login code.
 - **Signer access:** signers can access documents through secure, single-use magic links sent to their email address.
-- **Team access:** account administrators control which team members can use the account and what they can do. [Confirm: roles and permissions available in each plan.]
+- **Team access:** owners and admins control who is on the workspace (Member or Admin). Members cannot open Settings, billing, or API keys.
 - **Internal access:** access to production systems is limited to the people who need it for their role.
 
 ## 6. Identity verification (Signyd Verify)
