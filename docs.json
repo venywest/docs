@@ -102,8 +102,8 @@
                   "legal/privacy",
                   "legal/cookie",
                   "legal/security",
-                  "verify",
-                  "signature"
+                  "legal/verify",
+                  "legal/signature"
                 ],
                 "expanded": true
               }
@@ -211,5 +211,15 @@
   },
   "styling": {
     "eyebrows": "breadcrumbs"
-  }
+  },
+  "redirects": [
+    {
+      "source": "/verify",
+      "destination": "/legal/verify"
+    },
+    {
+      "source": "/signature",
+      "destination": "/legal/signature"
+    }
+  ]
 }
