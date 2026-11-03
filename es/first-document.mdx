@@ -1,45 +1,68 @@
 ---
 title: "Primer documento"
-description: "Sube, añade firmantes, coloca campos y envía en tres pasos."
+description: "Sube archivos, añade firmantes o usa autofirma, coloca campos y envía."
 ---
-Necesitas un **plan activo o en prueba** y al menos **un crédito de firma**. Si algún firmante tiene **Requerir Signyd Verify**, también necesitas **créditos de verificación**.
+
+Necesitas un **plan activo o en prueba**. Los envíos multiparte requieren al menos **un sobre mensual**. La **autofirma** es ilimitada en los planes públicos y no usa ese cupo. Si algún firmante tiene **Requerir Signyd Verify**, también necesitas **créditos de verificación**.
+
 ## Paso 1 — Subir
+
 1. Pulsa **+ Documento** (Inicio o Documentos) o ve a `/documents/new`.
-2. Arrastra un archivo o pulsa para buscar.
-3. Formatos: **PDF, DOC, DOCX**. Tamaño máximo: **15 MB**.
-4. Word se convierte a PDF en el navegador. No cierres la pestaña durante **Subiendo** o **Convirtiendo**.
-5. Opcional: **Abrir plantillas** y empezar desde un diseño guardado.
+2. Arrastra archivos o haz clic para buscar. Puedes subir **uno o más** archivos al mismo sobre.
+3. Formatos: **PDF, DOC, DOCX**.
+4. Tu plan limita **archivos por sobre**, **páginas totales**, **tamaño por archivo** y **tamaño total del sobre**. Cualquier incumplimiento bloquea todo el sobre antes de continuar.
+5. **Fusionar archivos subidos en un PDF** está activado por defecto. Desactívalo para conservar los archivos fuente al descargar; los firmantes siguen viendo una vista continua.
+6. Arrastra para definir el orden de las páginas si subes varios archivos.
+7. Los Word se convierten a PDF en el navegador. No cierres la pestaña durante **Subiendo** o **Convirtiendo**.
+8. Opcional: **Abrir plantillas** y empezar desde un diseño guardado.
+
 <Warning>
 Los PDF protegidos con contraseña de apertura no se pueden procesar. Quita la contraseña y vuelve a subir.
 </Warning>
+
 ## Paso 2 — Destinatarios (`/documents/[id]/prepare`, paso 1)
-1. Añade al menos un firmante con **correo, nombre y apellido**.
-2. Usa **+ Añadir destinatario**, **Añadirme** o elige un contacto guardado.
-3. Activa **Requerir Signyd Verify** en quien deba verificar identidad antes del panel.
-4. Continúa.
+
+1. Añade al menos un firmante con **correo, nombre y apellido**, o elige **Autofirma**.
+2. Usa **+ Añadir destinatario**, **Añadirme**, **Autofirma** o un contacto guardado.
+3. Activa **Requerir Signyd Verify** en quien deba verificar identidad antes del panel de firma.
+4. Respeta el máximo de destinatarios de tu plan (Starter **10**, Pro/Business **40**, Scale **99**, incluyendo CC).
+5. Continúa.
+
 Si partiste de una plantilla, Signyd puede exigir un mínimo de firmantes.
+
+Ver [Preparar y enviar](/es/documents/prepare) para detalles de autofirma.
+
 ## Paso 3 — Campos (paso 2)
+
 1. Elige el destinatario en la barra.
 2. Elige un tipo de campo y pulsa la página para colocarlo.
 3. Añade al menos un campo de **Firma** o **Iniciales**.
-4. Abre **Ajustes del campo** para marcar requerido/opcional, validación, tamaño y métodos de firma.
+4. Abre **Ajustes del campo** para obligatorio/opcional, validación, tamaño y métodos de firma permitidos.
+
 Ver [Campos](/es/documents/fields) para cada tipo.
+
 ## Paso 4 — Revisar y enviar (paso 3)
+
 1. Confirma **De**, **Enviar a** y **CC** opcional (CC solo recibe el documento final).
-2. Opcional: **Pedir firmas en orden** (firma secuencial).
-3. Define **Idioma del documento** (English o Español). Controla correos, el aviso legal y la auditoría de esta solicitud.
+2. Opcional: **Pedir firmas en orden**.
+3. Define **Idioma del documento** (English o Español). Controla correos, el aviso legal de firma y la auditoría de esta solicitud.
 4. Edita **Asunto** y **Mensaje**.
 5. Opcional: URL **Después de firmar** si tu plan incluye marca.
 6. Pulsa **Enviar documento**. Espera **Enviando para firma…**. No salgas de la página.
+
 ### Después del envío
+
 - Si te añadiste como firmante, Signyd puede abrir tu enlace de inmediato.
-- Si no, llegas al detalle del documento con estados y enlaces.
+- Si no, llegas al detalle del documento con estados y enlaces de firma.
+
 ## Si el envío falla
+
 | Mensaje | Qué hacer |
 | --- | --- |
-| No quedan créditos de firma | Mejora el plan o compra un paquete |
+| No quedan sobres / Necesitas un sobre | Mejora el plan o compra un paquete de sobres |
 | No quedan créditos de verificación | Compra un paquete o mejora el plan |
+| Demasiados destinatarios | Quita firmantes o CC para no superar el máximo del plan |
 | La verificación de identidad no está configurada | Contacta a soporte de Signyd |
 | El envío aún no está configurado | Contacta a soporte de Signyd |
 
-Un overlay para **comprar créditos de firma o verificación** puede abrirse desde el envío.
+Un overlay **Comprar sobres o Signyd Verify** puede abrirse desde el envío.

@@ -27,7 +27,7 @@ There is no password field. Older “check email and password” errors still ex
 ## Guest checkout (buy a plan first)
 You can start from a public plan URL (`/buy/[slug]`) or `/checkout` without an account:
 1. Enter the email that will become the **workspace admin**.
-2. Pay with card (USD; taxes may apply).
+2. For paid plans, pay with card (USD; taxes may apply). For **Starter**, select **Activate plan** — no payment method is required.
 3. Signyd creates the account and emails a confirmation link.
 4. Open the email, then continue to the workspace.
 If that email already has an account, Signyd asks you to **sign in** instead of creating a duplicate.
@@ -37,11 +37,15 @@ Members (`role = member`) cannot pay. Only owners and admins can subscribe or ad
 ## Onboarding
 If you are signed in but have no organization, `/onboarding` asks you to **Create your workspace**. Confirm the organization name to enter Signyd.
 ## Choose a plan
-New workspaces must activate a plan on `/choose-plan` before sending documents, using credits, or storing files.
-- Toggle **Monthly** or **Annual**.
+New workspaces must activate a plan on `/choose-plan` before sending documents, using envelopes, or storing files.
+- Toggle **Monthly** or **Annual** (annual is cheaper per month on paid plans).
+- **Starter** is free and activates without a card.
 - Trials appear as {count}**-day trial** when the catalog enables them.
 - Apply a coupon if you have one.
 - Members see plans but cannot checkout.
-After a usable subscription (active or trialing), Signyd sends you to **Home**.
+
+See current limits and prices in [Billing, plans, and envelopes](/settings/billing).
+
+After a usable subscription (active, trialing, or free Starter), Signyd sends you to **Home**.
 ## After payment
 Logged-in checkout shows **You're all set** and redirects to Home. Guest checkout tells you to confirm email first.

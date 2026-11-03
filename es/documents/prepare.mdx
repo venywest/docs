@@ -1,6 +1,6 @@
 ---
 title: "Preparar y enviar"
-description: "Destinatarios, campos, idioma y opciones de envío."
+description: "Destinatarios, autofirma, campos, idioma y opciones de envío."
 ---
 
 Ruta: `/documents/[id]/prepare`
@@ -13,10 +13,30 @@ Añade al menos un firmante con **correo**, **nombre** y **apellido**.
 
 - **+ Añadir destinatario**
 - **Añadirme**
+- **Autofirma** — firmas ahora; opcionalmente añade hasta **3** personas que solo reciben el archivo firmado
 - Elige un [contacto](/es/contacts/overview) guardado
 - Activa **Requerir Signyd Verify** en quien deba verificar identidad
 
-Máximo **40** destinatarios. Las plantillas pueden exigir un mínimo de firmantes.
+El límite de destinatarios (firmantes + CC) depende de tu [plan](/es/settings/billing):
+
+| Plan | Máx. destinatarios / sobre |
+| --- | --- |
+| Starter | 10 |
+| Pro | 40 |
+| Business | 40 |
+| Scale | 99 |
+
+El paso de preparación muestra **{count} / {max} destinatarios**. Las plantillas pueden exigir un mínimo de firmantes.
+
+### Autofirma
+
+**Autofirma** es para documentos que completas tú. **No** usa tu cupo mensual de sobres (ilimitada en todos los planes públicos).
+
+1. Elige **Autofirma**.
+2. Opcionalmente añade hasta **3** personas que reciben el archivo completado (no firman).
+3. Coloca tus campos y termina de firmar.
+
+**Añadirme** en un envío multiparte es distinto: eres uno de los firmantes de un sobre que consume un sobre mensual cuando el proceso se completa.
 
 ## Campos
 
@@ -39,9 +59,10 @@ Si te añadiste como firmante, Signyd puede abrir tu enlace de inmediato. Si no,
 
 | Mensaje | Qué hacer |
 | --- | --- |
-| No quedan créditos de firma | Mejora el plan o compra un paquete |
+| No quedan sobres / Necesitas un sobre | Mejora el plan o compra un paquete de sobres |
 | No quedan créditos de verificación | Compra un paquete o mejora el plan |
+| Demasiados destinatarios | Quita firmantes o CC para no superar el máximo del plan |
 | La verificación de identidad no está configurada | Contacta a soporte de Signyd |
 | El envío aún no está configurado | Contacta a soporte de Signyd |
 
-Un overlay de compra de créditos puede abrirse desde el envío.
+Un overlay **Comprar sobres o Signyd Verify** puede abrirse desde el envío.

@@ -1,27 +1,49 @@
 ---
-title: "Billing, plans, and credits"
-description: "Subscriptions, add-ons, cards, and what each credit means."
+title: "Billing, plans, and envelopes"
+description: "Subscriptions, plan limits, add-ons, cards, and what each envelope means."
 ---
 
 Routes:
 
 - `/settings/billing` — owners and admins
 - `/choose-plan` — required when there is no usable plan
-- `/checkout` — pay
-- `/buy/[slug]` — public plan link
+- `/checkout` — pay or activate a free plan
+- `/buy/[slug]` — public plan link (`starter`, `pro`, `business`, `scale`)
 
 Tabs: **Billing**, **Plans & Addons**, **Cards**.
 
-## Credits
+## Envelopes and credits
+
+In the product UI, signing usage is shown as **envelopes**.
 
 | Type | Rule |
 | --- | --- |
-| **Signing credits** | **1 credit = 1 completed signing process** |
-| **Monthly credits** | Come from the active plan period |
-| **Purchased credits** | Extra packs; usable **only with an active plan**; expire **90 days** after purchase |
+| **Envelope** | **1 envelope = 1 completed signing process** (multi-party send) |
+| **Monthly envelopes** | Included with the active plan period |
+| **Purchased envelopes** | Extra packs; usable **only with an active plan**; expire **90 days** after purchase |
+| **Self-sign envelopes** | **Unlimited** on every public plan; do not use your monthly envelope quota |
 | **ID verification credits** | Monthly + purchased packs; consumed when a new Verify session starts |
 
-Out of credits: upgrade the plan or buy a pack. Send blocks with a clear error and can open a purchase overlay.
+Out of monthly envelopes: upgrade the plan or buy a pack. Send blocks with a clear error and can open a purchase overlay (**Buy envelopes or Signyd Verify**).
+
+## Public plans
+
+Prices are in **USD**. The headline monthly price on [signyd.com/pricing](https://signyd.com/pricing) is the **annual** rate (billed yearly). Monthly billing costs more per month.
+
+| | Starter | Pro | Business | Scale |
+| --- | --- | --- | --- | --- |
+| **Price** | **$0**/mo (no card) | **$39**/mo annual ($468/yr) · **$49**/mo monthly | **$99**/mo annual ($1,188/yr) · **$119**/mo monthly | **$249**/mo annual ($2,988/yr) · **$299**/mo monthly |
+| **Envelopes / month** | 3 | 50 | 120 | Unlimited |
+| **Self-sign** | Unlimited | Unlimited | Unlimited | Unlimited |
+| **ID verifications / month** | — | 3 | 10 | 30 |
+| **Seats** | 1 | 1 | 3 | 15 |
+| **Recipients / envelope** (signers + CC) | Up to 10 | Up to 40 | Up to 40 | Up to 99 |
+| **Storage** | 1 GB | 20 GB | 1 TB | Unlimited |
+| **Custom branding** | No | No | Yes | Yes |
+
+All public plans include PDF sealing with **AATL**, unlimited templates, and an audit trail.
+
+Need custom security, a HIPAA BAA, or data residency? Use the **Enterprise** contact card on **Plans & Addons**.
 
 ## Storage and seats
 
@@ -29,14 +51,16 @@ Billing shows storage as **{used} of {limit}**. Your plan includes a storage quo
 
 ## Plans and add-ons
 
-Open **Plans & Addons** or **Choose a plan** to see the current public plans, prices (USD), trials, and extras. Typical extras:
+Open **Plans & Addons** or **Choose a plan** to see the current public plans, prices, trials, and extras. Typical extras:
 
-- Signing credit pack
+- Envelope pack
 - ID verification pack
 - Extra seat
 - Storage pack
 
 You can switch **Monthly** or **Annual**, apply a coupon, upgrade, or downgrade from this tab.
+
+**Starter** activates with **Activate plan**. No payment method is required.
 
 ## Billing tab
 
@@ -52,8 +76,9 @@ Save up to **2** cards with Stripe. Mark a **Default**. Add, edit, or remove.
 
 ## Checkout
 
-- Card payment, USD
-- **Digital delivery** — plan and credits activate when payment confirms
+- Card payment for paid plans, USD
+- Free Starter: email only, then **Activate plan**
+- **Digital delivery** — plan and envelopes activate when payment confirms (or immediately for free)
 - Coupon field
 - Change plan / interval in the cart
 - Taxes may apply

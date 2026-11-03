@@ -27,7 +27,7 @@ No hay campo de contraseña.
 ## Checkout de invitado (comprar un plan primero)
 Puedes empezar desde una URL pública de plan (`/buy/[slug]`) o `/checkout` sin cuenta:
 1. Ingresa el correo que será el **admin del workspace**.
-2. Paga con tarjeta (USD; pueden aplicarse impuestos).
+2. En planes de pago, paga con tarjeta (USD; pueden aplicarse impuestos). En **Starter**, pulsa **Activar plan** — no se requiere método de pago.
 3. Signyd crea la cuenta y envía un enlace de confirmación.
 4. Abre el correo y continúa al workspace.
 Si ese correo ya tiene cuenta, Signyd pide que **inicies sesión**.
@@ -37,11 +37,15 @@ Los miembros (`role = member`) no pueden pagar. Solo propietarios y administrado
 ## Onboarding
 Si tienes sesión pero no organización, `/onboarding` pide **Crear tu workspace**. Confirma el nombre de la organización.
 ## Elige un plan
-Los workspaces nuevos deben activar un plan en `/choose-plan` antes de enviar documentos, usar créditos o guardar archivos.
-- Alterna **Mensual** o **Anual**.
+Los workspaces nuevos deben activar un plan en `/choose-plan` antes de enviar documentos, usar sobres o guardar archivos.
+- Alterna **Mensual** o **Anual** (el anual es más barato por mes en planes de pago).
+- **Starter** es gratis y se activa sin tarjeta.
 - Las pruebas aparecen como prueba de **N días** cuando el catálogo las habilita.
 - Aplica un cupón si tienes uno.
 - Los miembros ven planes pero no pueden pagar.
-Tras una suscripción usable (activa o en prueba), Signyd te envía a **Inicio**.
+
+Ver límites y precios actuales en [Facturación, planes y sobres](/es/settings/billing).
+
+Tras una suscripción usable (activa, en prueba o Starter gratis), Signyd te envía a **Inicio**.
 ## Después del pago
 El checkout con sesión muestra que ya está listo y redirige a Inicio. El checkout de invitado pide confirmar el correo primero.

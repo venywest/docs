@@ -77,11 +77,12 @@ Creates a PDF, adds recipients, and sends signing invites.
 Rules:
 
 - `title`, `pdf_base64`, and at least one recipient are required
-- Maximum **40** recipients
+- Recipient count must stay within your plan max (Starter **10**, Pro/Business **40**, Scale **99**)
 - PDF maximum **15 MiB**
 - Password-protected (open-encrypted) PDFs return `pdf_open_encryption`
 - Signature position defaults to `72,72` on page `1`
 - Success: `201` with the document and recipients
+- Creating and sending a multi-party request consumes a monthly **envelope** when the signing process completes (`no_credits` if none remain)
 
 | Status | `error` |
 | --- | --- |

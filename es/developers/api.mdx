@@ -77,11 +77,12 @@ Crea un PDF, añade destinatarios y envía invitaciones de firma.
 Reglas:
 
 - `title`, `pdf_base64` y al menos un destinatario
-- Máximo **40** destinatarios
+- El número de destinatarios debe respetar el máximo del plan (Starter **10**, Pro/Business **40**, Scale **99**)
 - PDF máximo **15 MiB**
 - PDF con contraseña de apertura: `pdf_open_encryption`
 - Posición de firma por defecto `72,72` en página `1`
 - Éxito: `201` con documento y destinatarios
+- Crear y enviar una solicitud multiparte consume un **sobre** mensual cuando el proceso de firma se completa (`no_credits` si no quedan)
 
 | Estado | `error` |
 | --- | --- |
