@@ -14,8 +14,10 @@
 
 ## Terminology
 
-{/* Add product-specific terms and preferred usage */}
-{/* Example: Use "workspace" not "project", "member" not "user" */}
+- Prefer **envelope** for a signing request in the product UI (`1 envelope = 1 completed signing process`)
+- **Self sign** / **Autofirma** is unlimited on public plans and does not use the monthly envelope quota
+- Use **workspace** not "project"; **member** for the `member` role
+- Plan names: **Starter**, **Pro**, **Business**, **Scale** (internal Pro id may still be `plan_team`)
 
 ## Style preferences
 

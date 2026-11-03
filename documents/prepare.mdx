@@ -1,6 +1,6 @@
 ---
 title: "Prepare and send"
-description: "Recipients, fields, language, and send options."
+description: "Recipients, self-sign, fields, language, and send options."
 ---
 
 Route: `/documents/[id]/prepare`
@@ -13,10 +13,30 @@ Add at least one signer with **email**, **first name**, and **last name**.
 
 - **+ Add recipient**
 - **Add myself**
+- **Self sign** — you sign now; optionally add up to **3** people who only receive the signed file
 - Pick a saved [contact](/contacts/overview)
 - Toggle **Require Signyd Verify** on any signer who must verify identity before the panel
 
-Maximum **40** recipients. Templates can require a minimum number of signers.
+Recipient limits (signers + CC) depend on your [plan](/settings/billing):
+
+| Plan | Max recipients / envelope |
+| --- | --- |
+| Starter | 10 |
+| Pro | 40 |
+| Business | 40 |
+| Scale | 99 |
+
+The prepare step shows **{count} / {max} recipients**. Templates can require a minimum number of signers.
+
+### Self sign
+
+**Self sign** is for documents you complete yourself. It does **not** use your monthly envelope quota (unlimited on every public plan).
+
+1. Choose **Self sign**.
+2. Optionally add up to **3** people who receive the completed file (they are not signing parties).
+3. Place your fields, then finish signing.
+
+**Add myself** on a normal multi-party send is different: you are one of the signers on an envelope that uses a monthly envelope when the process completes.
 
 ## Fields
 
@@ -39,9 +59,10 @@ If you added yourself as a signer, Signyd can open your signing link immediately
 
 | Message | What to do |
 | --- | --- |
-| No signing credits remaining | Upgrade or buy a credit pack |
+| No envelopes remaining / You need an envelope | Upgrade or buy an envelope pack |
 | No ID verification credits remaining | Buy a verification pack or upgrade |
+| Too many recipients | Remove signers or CC to stay within your plan max |
 | Identity verification is not configured | Contact Signyd support |
 | Sending is not configured yet | Contact Signyd support |
 
-A **Buy signing or ID verification credits** overlay can open from the send flow.
+A **Buy envelopes or Signyd Verify** overlay can open from the send flow.

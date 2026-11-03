@@ -1,27 +1,49 @@
 ---
-title: "Facturación, planes y créditos"
-description: "Suscripciones, extras, tarjetas y el significado de cada crédito."
+title: "Facturación, planes y sobres"
+description: "Suscripciones, límites del plan, extras, tarjetas y el significado de cada sobre."
 ---
 
 Rutas:
 
 - `/settings/billing` — propietario y admin
 - `/choose-plan` — obligatorio sin plan usable
-- `/checkout` — pagar
-- `/buy/[slug]` — enlace público de plan
+- `/checkout` — pagar o activar un plan gratis
+- `/buy/[slug]` — enlace público de plan (`starter`, `pro`, `business`, `scale`)
 
 Pestañas: **Facturación**, **Planes y extras**, **Tarjetas**.
 
-## Créditos
+## Sobres y créditos
+
+En la interfaz, el uso de firma se muestra como **sobres** (*envelopes*).
 
 | Tipo | Regla |
 | --- | --- |
-| **Créditos de firma** | **1 crédito = 1 proceso de firma completado** |
-| **Créditos mensuales** | Vienen del período del plan activo |
-| **Créditos comprados** | Paquetes extra; solo con **plan activo**; caducan a **90 días** |
+| **Sobre** | **1 sobre = 1 proceso de firma completado** (envío multiparte) |
+| **Sobres mensuales** | Incluidos en el período del plan activo |
+| **Sobres comprados** | Paquetes extra; solo con **plan activo**; caducan a **90 días** |
+| **Sobres de autofirma** | **Ilimitados** en todos los planes públicos; no usan tu cupo mensual |
 | **Créditos de verificación** | Mensuales + paquetes; se consumen al iniciar una sesión Verify nueva |
 
-Sin créditos: mejora el plan o compra un paquete. El envío se bloquea y puede abrir la compra.
+Sin sobres mensuales: mejora el plan o compra un paquete. El envío se bloquea y puede abrir la compra (**Comprar sobres o Signyd Verify**).
+
+## Planes públicos
+
+Precios en **USD**. El precio mensual destacado en [signyd.com/pricing](https://signyd.com/pricing) es la tarifa **anual** (cobro anual). El cobro mensual cuesta más por mes.
+
+| | Starter | Pro | Business | Scale |
+| --- | --- | --- | --- | --- |
+| **Precio** | **$0**/mes (sin tarjeta) | **$39**/mes anual ($468/año) · **$49**/mes mensual | **$99**/mes anual ($1,188/año) · **$119**/mes mensual | **$249**/mes anual ($2,988/año) · **$299**/mes mensual |
+| **Sobres / mes** | 3 | 50 | 120 | Ilimitados |
+| **Autofirma** | Ilimitada | Ilimitada | Ilimitada | Ilimitada |
+| **Verificaciones de ID / mes** | — | 3 | 10 | 30 |
+| **Asientos** | 1 | 1 | 3 | 15 |
+| **Destinatarios / sobre** (firmantes + CC) | Hasta 10 | Hasta 40 | Hasta 40 | Hasta 99 |
+| **Almacenamiento** | 1 GB | 20 GB | 1 TB | Ilimitado |
+| **Marca personalizada** | No | No | Sí | Sí |
+
+Todos los planes públicos incluyen sellado PDF con **AATL**, plantillas ilimitadas y auditoría.
+
+¿Necesitas seguridad a medida, un BAA HIPAA o residencia de datos? Usa la tarjeta **Enterprise** en **Planes y extras**.
 
 ## Almacenamiento y asientos
 
@@ -29,14 +51,16 @@ La facturación muestra **{used} de {limit}**. Tu plan incluye un cupo de almace
 
 ## Planes y extras
 
-Abre **Planes y extras** o **Elige un plan** para ver los planes públicos, precios (USD), pruebas y complementos. Extras habituales:
+Abre **Planes y extras** o **Elige un plan** para ver los planes públicos, precios, pruebas y complementos. Extras habituales:
 
-- Paquete de créditos de firma
+- Paquete de sobres
 - Paquete de verificación de identidad
 - Asiento extra
 - Paquete de almacenamiento
 
 Puedes cambiar **Mensual** o **Anual**, aplicar un cupón, mejorar o bajar de plan.
+
+**Starter** se activa con **Activar plan**. No se requiere método de pago.
 
 ## Pestaña Facturación
 
@@ -52,8 +76,9 @@ Hasta **2** tarjetas. Marca una **Predeterminada**. Añade, edita o quita.
 
 ## Checkout
 
-- Pago con tarjeta, USD
-- **Entrega digital** — el plan y los créditos se activan al confirmar el pago
+- Pago con tarjeta en planes de pago, USD
+- Starter gratis: solo correo, luego **Activar plan**
+- **Entrega digital** — el plan y los sobres se activan al confirmar el pago (o de inmediato si es gratis)
 - Cupón
 - Cambiar plan / intervalo en el carrito
 - Pueden aplicarse impuestos
